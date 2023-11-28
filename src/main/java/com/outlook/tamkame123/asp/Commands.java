@@ -15,12 +15,12 @@ public class Commands implements TabExecutor {
 	public @Nullable List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command,
 			@NotNull String label, @NotNull String[] args) {
 		List<String> completeList = new ArrayList<String>();
-		//switch(args.length) {
-		//case 1:
+		// switch(args.length) {
+		// case 1:
 		completeList.add("true");
 		completeList.add("false");
-		//	break;
-		//}
+		// break;
+		// }
 
 		return completeList;
 	}
@@ -28,19 +28,28 @@ public class Commands implements TabExecutor {
 	@Override
 	public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label,
 			@NotNull String[] args) {
-		if(args.length==1) {
-			switch(args[0]) {
-			case "true":
-				sender.sendMessage("asp is enabled!");
-				PlayerChecker.isDisabled(false);
+		switch (args.length) {
+			case 0:
+				if (PlayerChecker.isDisabled()) {
+					sender.sendMessage("asp is disabled");
+				} else {
+					sender.sendMessage("asp is enabled");
+				}
 				return true;
-			case "false":
-				sender.sendMessage("asp is disabled!");
-				PlayerChecker.isDisabled(true);
-				return true;
-			}
+			case 1:
+				switch (args[0]) {
+					case "true":
+						sender.sendMessage("asp is enabled!");
+						PlayerChecker.isDisabled(false);
+						return true;
+					case "false":
+						sender.sendMessage("asp is disabled!");
+						PlayerChecker.isDisabled(true);
+						return true;
+					default:
+						return false;
+				}
 		}
 		return false;
 	}
-
 }

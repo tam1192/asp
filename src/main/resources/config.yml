@@ -1,0 +1,4 @@
+# Time to wait after player reaches 0
+wait_time[min]: 10
+# asp disabled
+isDisabled: false
