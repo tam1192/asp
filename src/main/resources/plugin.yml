@@ -1,0 +1,20 @@
+main: com.outlook.tamkame123.asp.Main
+name: auto_stop_plugin
+version: '1.0'
+description: server auto stop
+author: nikki
+commands:
+   asp:
+      description: asp enabled
+      usage: /asp [true|false]
+      permission: asp.management
+      permission-message: You do not have permission!
+permissions:
+   asp.management:
+      description: asp management permission
+      default: op
+   asp.*:
+      description: asp permission
+      default: op
+      children:
+         asp.management: true
